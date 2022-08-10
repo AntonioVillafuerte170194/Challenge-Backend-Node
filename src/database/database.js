@@ -1,18 +1,18 @@
 import { Sequelize } from "sequelize";
-// import { peliculas } from "../models/movies.js";
-// import { characters } from "../models/characters.js";
+// import { config } from "../lib/config.js";
 
-export const sequelize = new Sequelize("postgres", "postgres", "guni", {
-  host: "localhost",
-  dialect: "postgres",
-  port: "5433",
-});
-
-// peliculas.belongsToMany(characters, {
-//   through: "Peliculas_Personaje",
-//   as: "pelipers",
-// });
-// characters.belongsToMany(peliculas, {
-//   through: "Peliculas_Personaje",
-//   as: "pelipers",
-// });
+export const sequelize = new Sequelize(
+  "postgres",
+  "postgres",
+  "guni",
+  {
+    host: "localhost",
+    dialect: "postgres",
+    port: "5433",
+  }
+  // `postgres://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`,
+  // {
+  //   logging: false,
+  //   native: false,
+  // }
+);

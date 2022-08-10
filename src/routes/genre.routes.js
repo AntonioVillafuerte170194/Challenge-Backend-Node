@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { verifyToken } from "../controllers/auth.controllers.js";
 import {
   createGenero,
   deleteGenero,
@@ -7,11 +8,11 @@ import {
 } from "../controllers/genre.controllers.js";
 const router = Router();
 
-router.get("/genero", getGenero);
-router.post("/genero", createGenero);
-router.delete("/genero/:id", deleteGenero);
-router.put("/genero/:id");
-router.get("/genero/:id");
-router.get("/genero/:id/peliculas", getGeneroPeliculas);
+router.get("/", verifyToken, getGenero);
+router.post("/", verifyToken, createGenero);
+router.delete("/:id", verifyToken, deleteGenero);
+router.put("/:id", verifyToken);
+router.get("/:id", verifyToken);
+router.get("/:id/peliculas", verifyToken, getGeneroPeliculas);
 
 export default router;
